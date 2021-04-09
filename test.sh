@@ -1,4 +1,4 @@
 echo 'this for testing'
 date
-sudo mkdir test
+sudo mkdir /root/test
 sudo pwd
