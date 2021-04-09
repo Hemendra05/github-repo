@@ -1,3 +1,3 @@
 echo 'this for testing'
 date
-mkdir /root/test
+sudo mkdir /root/test
