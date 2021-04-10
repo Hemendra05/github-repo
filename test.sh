@@ -1,4 +1,3 @@
-yum install git -y
 echo 'this for testing'
 date
 #sudo mkdir /root/test
