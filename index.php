@@ -1,5 +1,5 @@
 <?php
 
-print "Welcome To OpenShift First!!"
+print "Welcome To Jenkins First!!"
   
 ?>
