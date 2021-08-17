@@ -5,10 +5,10 @@ echo "----------------------------------Launching Docker Container with the Cent
 docker run -dit --name webserver -p 8080:80 centos:latest
 
 echo "----------------------------------Installing Apache webserver & net-tools inside container---------------------------------"
-docker exec -it webserver yum install httpd net-tools -y
+docker exec -i webserver yum install httpd net-tools -y
 
 echo "----------------------------------Starting httpd service---------------------------------"
-docker exec -it webserver /usr/sbin/httpd
+docker exec -i webserver /usr/sbin/httpd
 
 
 echo "---------------------------------Copying web pages in Conainer --------------------------------"
