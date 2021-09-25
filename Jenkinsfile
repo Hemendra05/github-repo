@@ -22,7 +22,7 @@ pipeline {
         stage("Publish") {
             steps {
                 script {
-                    if (params.DEPLOYED) {
+                    if (date) {
                         echo "this is running becoz app is deployed."
                         echo "${params.DEPLOYED}"
                     } else {
