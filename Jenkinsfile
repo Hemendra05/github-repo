@@ -22,7 +22,7 @@ pipeline {
         stage("Publish") {
             steps {
                 script {
-                    if (params.isNotAlreadyDeployed) {
+                    if (params.DEPLOYED) {
                         echo "App is not deployed yet, so its deploying now."
                     } else {
                         echo "this is running becoz app is deployed."
