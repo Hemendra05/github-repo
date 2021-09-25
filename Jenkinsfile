@@ -24,8 +24,10 @@ pipeline {
                 script {
                     if (params.DEPLOYED) {
                         echo "App is not deployed yet, so its deploying now."
+                        echo "${params.DEPLOYED}"
                     } else {
                         echo "this is running becoz app is deployed."
+                        echo "${params.DEPLOYED}"
                     }
                 }
             }
