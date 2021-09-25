@@ -6,7 +6,7 @@ pipeline {
     agent any
     
     parameters {
-        booleanParam(name: "RELEASE", defaultValue: true)
+        booleanParam(name: "RELEASE", defaultValue: flase)
     }
     
     stages {
@@ -24,7 +24,7 @@ pipeline {
                     if (params.RELEASE) {
                         echo "${params.RELEASE}"
                     } else {
-                        echo "nothing happen"
+                        echo "${params.RELEASE}"
                     }
                 }
             }
