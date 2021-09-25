@@ -6,7 +6,8 @@ pipeline {
     agent any
     
     parameters {
-        booleanParam(name: "RELEASE", defaultValue: false)
+        booleanParam(name: "isAlreadyDeployed", defaultValue: false)
+        string(name: "imageTag", defaultValue: "latest", description: "This tag is for creating the Docker Image.")
     }
     
     stages {
@@ -21,11 +22,10 @@ pipeline {
         stage("Publish") {
             steps {
                 script {
-                    if (params.RELEASE) {
-                        echo "${params.RELEASE}"
+                    if (params.isAlreadyDeployed) {
+                        echo "App is not deployed yet, so its deploying now."
                     } else {
-                        echo "This is false"
-                        echo "${params.RELEASE}"
+                        echo "this is running becoz app is deployed."
                     }
                 }
             }
