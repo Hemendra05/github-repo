@@ -6,7 +6,7 @@ pipeline {
     agent any
     
     parameters {
-        booleanParam(name: "RELEASE", defaultValue: flase)
+        booleanParam(name: "RELEASE", defaultValue: false)
     }
     
     stages {
