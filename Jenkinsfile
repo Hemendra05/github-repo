@@ -24,6 +24,7 @@ pipeline {
                     if (params.RELEASE) {
                         echo "${params.RELEASE}"
                     } else {
+                        echo "This is false"
                         echo "${params.RELEASE}"
                     }
                 }
