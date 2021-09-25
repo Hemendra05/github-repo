@@ -6,7 +6,7 @@ pipeline {
     agent any
     
     parameters {
-        booleanParam(name: "NOT_DEPLOYED", defaultValue: false)
+        booleanParam(name: "NOT_DEPLOYED", defaultValue: true)
         string(name: "imageTag", defaultValue: "latest", description: "This tag is for creating the Docker Image.")
     }
     
