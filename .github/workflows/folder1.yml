@@ -12,19 +12,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: hemendra05/nodejs:latest
-
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
 
-      - name: Run a one-line script
-        working-directory: ./folder1/
-        run: |
-          echo Hello, Container!,
-          npm i
+      - name: Install Python dependencies
+        run: pip install black flake8
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
-          eslint: true
-          prettier: true
+          black: true
+          flake8: true
