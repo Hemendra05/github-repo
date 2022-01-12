@@ -31,9 +31,6 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
 
-
-
-jobs:
   build:
     runs-on: ubuntu-latest
 
