@@ -9,42 +9,10 @@ on:
     branches: [ master ]
   
 
-  workflow_dispatch:
-
 jobs:
-  auth:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN  }}
-          aws-region: ap-south-1
-
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
-
-
   build:
     runs-on: ubuntu-latest
-
-    # steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      # - uses: actions/checkout@v2
-
-      # # Runs a single command using the runners shell
-      # - name: Run a one-line script
-      #   run: |
-      #     echo Hello, folder!,
-      #     node --version
-
-    container: 872436821098.dkr.ecr.ap-south-1.amazonaws.com/models_pathway:4
+    container: hemendra05/node
 
     steps:
       - uses: actions/checkout@v2
