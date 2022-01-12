@@ -20,7 +20,7 @@ jobs:
       - name: Run a one-line script
         run: |
           echo Hello, Container!,
-          npm i
+          npm i folder1/package.json
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
