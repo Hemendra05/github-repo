@@ -28,6 +28,7 @@ jobs:
       - name: Install Node.js dependencies
         working-directory: ./folder2
         run: npm i
+        run: ls
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
