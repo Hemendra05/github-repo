@@ -13,6 +13,19 @@ on:
       - folder2/**
 
 jobs:
+  run_linters:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+       - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install Python dependencies
+        run: node --version
+  
   build:
     runs-on: ubuntu-latest
 
