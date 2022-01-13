@@ -9,6 +9,8 @@ on:
       - folder2/**
   pull_request:
     branches: [ master ]
+    paths:
+      - folder2/**
 
 jobs:
   build:
