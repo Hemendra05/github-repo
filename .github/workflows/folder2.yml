@@ -42,6 +42,7 @@ jobs:
       - name: Install Node.js dependencies
         working-directory: ./folder2
         run: |
+          npm --version
           npm i
 
       - name: Run linters
