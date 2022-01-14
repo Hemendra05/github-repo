@@ -28,10 +28,10 @@ jobs:
         run: |
           npm --version
           npm i
+          pwd
 
       - name: Run linters
         uses: wearerequired/lint-action@v1
-        working-directory: ./folder2
         with:
           eslint: true
           prettier: true
