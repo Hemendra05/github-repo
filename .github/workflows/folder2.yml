@@ -27,11 +27,10 @@ jobs:
         working-directory: ./folder2
         run: |
           npm --version
-          npm install eslint --save-dev
-          npm install --save-dev --save-exact prettier
           npm i
 
       - name: Run linters
+        working-directory: ./folder2
         uses: wearerequired/lint-action@v1
         with:
           eslint: true
