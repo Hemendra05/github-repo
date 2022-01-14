@@ -30,8 +30,8 @@ jobs:
           npm i
 
       - name: Run linters
-        working-directory: ./folder2
         uses: wearerequired/lint-action@v1
+        working-directory: ./folder2
         with:
           eslint: true
           prettier: true
