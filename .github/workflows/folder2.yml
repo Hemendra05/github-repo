@@ -23,8 +23,11 @@ jobs:
         with:
           node-version: 12
 
-      - name: Install Python dependencies
-        run: node --version
+      - name: Run linters
+        uses: wearerequired/lint-action@v1
+        with:
+          eslint: false
+          prettier: true
   
   build:
     runs-on: ubuntu-latest
@@ -45,8 +48,3 @@ jobs:
           npm --version
           npm i
 
-      - name: Run linters
-        uses: wearerequired/lint-action@v1
-        with:
-          eslint: true
-          prettier: true
