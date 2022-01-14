@@ -28,7 +28,8 @@ jobs:
         run: |
           npm --version
           pwd
-          npm i folder2/
+          npm i
+          ls -a
           
 
       - name: Run linters
