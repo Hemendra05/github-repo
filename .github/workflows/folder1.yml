@@ -45,6 +45,21 @@ jobs:
         run: |
           bandit -r .
 
+  pylama_Check:
+    runs-on: ubuntu-latest
+    container: python:latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Bandit Library
+        run: |
+          pip install pylama
+
+      - name: Check Security
+        run: |
+          pylama
+
+
   build:
     runs-on: ubuntu-latest
     steps:
