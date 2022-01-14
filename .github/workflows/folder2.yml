@@ -24,7 +24,7 @@ jobs:
           node-version: 12
 
       - name: Install Node.js dependencies
-        # working-directory: ./folder2
+        working-directory: ./folder2
         run: |
           npm --version
           pwd
