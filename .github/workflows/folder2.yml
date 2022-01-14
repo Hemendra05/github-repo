@@ -43,10 +43,9 @@ jobs:
         working-directory: ./folder2
         run: |
           npm i
-          ls
 
-      # - name: Run linters
-      #   uses: wearerequired/lint-action@v1
-      #   with:
-      #     eslint: true
-      #     prettier: true
+      - name: Run linters
+        uses: wearerequired/lint-action@v1
+        with:
+          eslint: true
+          prettier: true
