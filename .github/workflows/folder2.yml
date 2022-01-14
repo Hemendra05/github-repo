@@ -27,7 +27,7 @@ jobs:
         # working-directory: ./folder2
         run: |
           npm --version
-          npm i
+          npm i ./folder2/
           pwd
 
       - name: Run linters

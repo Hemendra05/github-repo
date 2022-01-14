@@ -14,13 +14,9 @@ on:
 jobs:
   run_linters:
     runs-on: ubuntu-latest
+    container: python:latest
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Set up Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.8
 
       - name: Install Python dependencies
         run: pip install black flake8
@@ -30,6 +26,20 @@ jobs:
         with:
           black: true
           flake8: true
+
+  pylama_Check:
+    runs-on: ubuntu-latest
+    container: python:latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Bandit Library
+        run: |
+          pip install pylama
+
+      - name: Check Pylama
+        run: |
+          pylama
 
   bandit_check:
     runs-on: ubuntu-latest
@@ -45,19 +55,7 @@ jobs:
         run: |
           bandit -r .
 
-  pylama_Check:
-    runs-on: ubuntu-latest
-    container: python:latest
-    steps:
-      - uses: actions/checkout@v2
 
-      - name: Install Bandit Library
-        run: |
-          pip install pylama
-
-      - name: Check Security
-        run: |
-          pylama
 
 
   build:
