@@ -23,10 +23,18 @@ jobs:
         with:
           node-version: 12
 
+      - name: Install Node.js dependencies
+        working-directory: ./folder2
+        run: |
+          npm --version
+          npm install eslint --save-dev
+          npm install --save-dev --save-exact prettier
+          npm i
+
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
-          eslint: false
+          eslint: true
           prettier: true
   
   build:
