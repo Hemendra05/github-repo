@@ -33,6 +33,8 @@ jobs:
         with:
           eslint: true
           prettier: true
+          eslint_dir: ./folder2/
+          prettier_dir: ./folder2/
   
   build:
     runs-on: ubuntu-latest
