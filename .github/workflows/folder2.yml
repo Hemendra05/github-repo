@@ -24,6 +24,7 @@ jobs:
           node-version: 12
 
       - name: Install Node.js dependencies
+        working-directory: ./folder2
         run: |
           # npm install eslint --save-dev
           # npm install --save-dev --save-exact prettier
