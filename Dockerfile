@@ -6,6 +6,14 @@ RUN dnf install python3 -y
 
 RUN npm install -g aws-cdk
 
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
+RUN yum install unzip -y
+
+RUN unzip awscliv2.zip
+
+RUN ./aws/install
+
 COPY requirements.txt requirements.txt
 
 RUN pip3 install -r requirements.txt
