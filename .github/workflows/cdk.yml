@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Login into AWS CodeArtifacts
-        run: aws codeartifact login --tool pip3 --repository cdk_base_functions --domain myways-devops --domain-owner 872436821098
+        run: aws codeartifact login --tool pip --repository cdk_base_functions --domain myways-devops --domain-owner 872436821098
 
       - name: Installing requirements
         run: pip3 install -r requirements.txt
