@@ -6,6 +6,8 @@ RUN dnf install python3 -y
 
 RUN ln -s /usr/bin/pip3.6 /usr/bin/pip
 
+RUN pip install --upgrade pip
+
 RUN npm install -g aws-cdk
 
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
