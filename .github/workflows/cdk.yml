@@ -26,6 +26,7 @@ jobs:
         run: aws codeartifact login --tool pip --repository cdk_base_functions --domain myways-devops --domain-owner 872436821098
 
       - name: Installing requirements
+        working-directory: ./cdk/
         run: pip install -r requirements.txt
 
       - name: Deploy the application
