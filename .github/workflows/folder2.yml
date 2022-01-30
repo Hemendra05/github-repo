@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       
       - name: Set up Node.js
         uses: actions/setup-node@v1
@@ -24,15 +26,19 @@ jobs:
           node-version: 12
 
       - name: Install Node.js dependencies
+        working-directory: ./folder2
         run: |
-          npm install eslint --save-dev
-          npm install --save-dev --save-exact prettier
+          # npm install eslint --save-dev
+          # npm install --save-dev --save-exact prettier
+          npm i
 
       - name: Run linters
-        uses: wearerequired/lint-action@v1
+        uses: wearerequired/lint-action@v1.9.0
         with:
           eslint: true
           prettier: true
+          eslint_dir: ./folder2/
+          prettier_dir: ./folder2/
   
   build:
     runs-on: ubuntu-latest

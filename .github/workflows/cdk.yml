@@ -1,0 +1,34 @@
+name: CDK deploy
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    container: hemendra05/aws-cdk
+    steps:
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - uses: actions/checkout@v2
+
+      - name: Login into AWS CodeArtifacts
+        run: aws codeartifact login --tool pip --repository cdk_base_functions --domain myways-devops --domain-owner 872436821098
+
+      - name: Installing requirements
+        working-directory: ./cdk/
+        run: pip install -r requirements.txt
+
+      - name: Deploy the application
+        working-directory: ./cdk/
+        run: cdk deploy --require-approval never

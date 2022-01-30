@@ -1,0 +1,130 @@
+{
+  "version": "16.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "CdkSfnStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "CdkSfnStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "CdkSfnStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://872436821098/ap-south-1",
+      "properties": {
+        "templateFile": "CdkSfnStack.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::872436821098:role/cdk-hnb659fds-deploy-role-872436821098-ap-south-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::872436821098:role/cdk-hnb659fds-cfn-exec-role-872436821098-ap-south-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-872436821098-ap-south-1/d0e2992734baeeeafc7d37cfa427d2b2f57bd23d362aaad05b7447badf266807.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "CdkSfnStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::872436821098:role/cdk-hnb659fds-lookup-role-872436821098-ap-south-1",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "CdkSfnStack.assets"
+      ],
+      "metadata": {
+        "/CdkSfnStack/MyFunc/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyFuncServiceRole54065130"
+          }
+        ],
+        "/CdkSfnStack/MyFunc/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyFunc8A243A2C"
+          }
+        ],
+        "/CdkSfnStack/widgets-api/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapi0BCA0B12"
+          }
+        ],
+        "/CdkSfnStack/widgets-api/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapiCloudWatchRole13420B98"
+          }
+        ],
+        "/CdkSfnStack/widgets-api/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapiAccount54650C10"
+          }
+        ],
+        "/CdkSfnStack/widgets-api/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapiDeployment9DE33693e5b56fa9628009a19e99f0f7b2fd07b9"
+          }
+        ],
+        "/CdkSfnStack/widgets-api/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapiDeploymentStageprod19E45538"
+          }
+        ],
+        "/CdkSfnStack/widgets-api/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapiEndpoint2B78C075"
+          }
+        ],
+        "/CdkSfnStack/widgets-api/Default/GET/ApiPermission.CdkSfnStackwidgetsapi423EF6E6.GET..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapiGETApiPermissionCdkSfnStackwidgetsapi423EF6E6GETDFEB4730"
+          }
+        ],
+        "/CdkSfnStack/widgets-api/Default/GET/ApiPermission.Test.CdkSfnStackwidgetsapi423EF6E6.GET..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapiGETApiPermissionTestCdkSfnStackwidgetsapi423EF6E6GET9C0E4DA2"
+          }
+        ],
+        "/CdkSfnStack/widgets-api/Default/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "widgetsapiGETFE8E3A17"
+          }
+        ],
+        "/CdkSfnStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/CdkSfnStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/CdkSfnStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "CdkSfnStack"
+    }
+  }
+}
