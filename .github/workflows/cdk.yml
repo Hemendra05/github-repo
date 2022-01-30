@@ -31,4 +31,4 @@ jobs:
 
       - name: Deploy the application
         working-directory: ./cdk/
-        run: cdk deploy
+        run: cdk deploy --require-approval never
