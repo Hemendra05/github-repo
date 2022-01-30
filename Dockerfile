@@ -18,6 +18,8 @@ RUN unzip awscliv2.zip
 
 RUN ./aws/install
 
+RUN pip install wheel
+
 COPY requirements.txt requirements.txt
 
 RUN pip install -r requirements.txt
