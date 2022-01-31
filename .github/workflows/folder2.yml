@@ -14,6 +14,6 @@ on:
 
 jobs:
   call_main_workflow:
-    uses: ./.github/workflows/main.yml@main
+    uses: Hemendra05/github-repo/.github/workflows/main.yml@main
     with:
       path: ./folder2/
