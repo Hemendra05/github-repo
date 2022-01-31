@@ -14,6 +14,6 @@ on:
 
 jobs:
   call_main_workflow:
-    uses: ./.github/workflows/main.yml@main
+    uses: ./.github/workflows/main.yml
     with:
       path: ./folder2/
