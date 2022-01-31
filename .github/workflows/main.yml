@@ -7,9 +7,9 @@ on:
         required: true
         type: string
 
-# defaults:
-#   run:
-#     working-directory: ${{ inputs.path }}
+defaults:
+  run:
+    working-directory: ${{ github.event.inputs.path }}
 
 jobs:
   run_linters:
@@ -17,9 +17,7 @@ jobs:
     container: python:latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          path: ${{ inputs.path }}
-
+        
       - name: Install Python dependencies
         run: pip install black flake8
 
@@ -36,9 +34,7 @@ jobs:
     container: python:latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          path: ${{ inputs.path }}
-
+        
       - name: Install Pylama Library
         run: |
           pwd
@@ -55,9 +51,7 @@ jobs:
     container: python:latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          path: ${{ inputs.path }}
-
+        
       - name: Install Bandit Library
         run: |
           pip install bandit
@@ -71,9 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          path: ${{ inputs.path }}
-
+        
       - name: Set up Python
         uses: actions/setup-python@v1
         with:
