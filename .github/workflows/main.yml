@@ -7,9 +7,9 @@ on:
         required: true
         type: string
 
-# defaults:
-#   run:
-#     working-directory: ${{ inputs.path }}
+defaults:
+  run:
+    working-directory: ${{ inputs.path }}
 
 jobs:
   run_linters:
