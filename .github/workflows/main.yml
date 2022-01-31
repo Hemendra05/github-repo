@@ -25,9 +25,9 @@ jobs:
         uses: wearerequired/lint-action@v1
         with:
           black: true
-          black_dir: ${{ inputs.path }}
+          #black_dir: ${{ inputs.path }}
           flake8: true
-          flake8_dir: ${{ inputs.path }}
+          #flake8_dir: ${{ inputs.path }}
 
   pylama_Check:
     runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
           pip install pylama
 
       - name: Check Pylama
-        working-directory: ${{ inputs.path }}
+        #working-directory: ${{ inputs.path }}
         run: |
           pylama
 
@@ -57,7 +57,7 @@ jobs:
           pip install bandit
 
       - name: Check Security
-        working-directory: ${{ inputs.path }}
+        #working-directory: ${{ inputs.path }}
         run: |
           bandit -r .
 
