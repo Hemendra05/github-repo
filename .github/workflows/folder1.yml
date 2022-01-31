@@ -13,6 +13,6 @@ on:
 
 jobs:
   call_main_workflow:
-    uses: ./.github/workflows/main1.yml
+    uses: ./.github/workflows/main.yml
     with:
       path: ./folder1/
