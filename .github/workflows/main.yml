@@ -7,9 +7,9 @@ on:
         required: true
         type: string
 
-defaults:
-  run:
-    working-directory: ${{ github.event.inputs.path }}
+# defaults:
+#   run:
+#     working-directory: ${{ github.event.inputs.path }}
 
 jobs:
   run_linters:
@@ -42,7 +42,7 @@ jobs:
           pip install pylama
 
       - name: Check Pylama
-        #working-directory: ${{ inputs.path }}
+        working-directory: ${{ inputs.path }}
         run: |
           pylama
 
@@ -57,7 +57,7 @@ jobs:
           pip install bandit
 
       - name: Check Security
-        #working-directory: ${{ inputs.path }}
+        working-directory: ${{ inputs.path }}
         run: |
           bandit -r .
 
