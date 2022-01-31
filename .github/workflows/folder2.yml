@@ -13,49 +13,7 @@ on:
       - folder2/**
 
 jobs:
-  run_linters:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-
-      - name: Install Node.js dependencies
-        working-directory: ./folder2
-        run: |
-          # npm install eslint --save-dev
-          # npm install --save-dev --save-exact prettier
-          npm i
-
-      - name: Run linters
-        uses: wearerequired/lint-action@v1.9.0
-        with:
-          eslint: true
-          prettier: true
-          eslint_dir: ./folder2/
-          prettier_dir: ./folder2/
-  
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-
-      # ESLint and Prettier must be in `package.json`
-      - name: Install Node.js dependencies
-        working-directory: ./folder2
-        run: |
-          npm --version
-          npm i
-
+  call_main_workflow:
+    uses: ./.github/workflows/main.yml
+    with:
+      path: ./folder2/

@@ -1,0 +1,70 @@
+name: Main workflow for Python
+
+on:
+  workflow_call:
+    inputs:
+      path:
+        required: true
+        type: string
+
+defaults:
+  run:
+    working-directory: ${{ inputs.path }}
+
+jobs:
+  run_linters:
+    runs-on: ubuntu-latest
+    container: python:latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Python dependencies
+        run: pip install black flake8
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v1
+        with:
+          black: true
+          black_dir: ${{ inputs.path }}
+          flake8: true
+          flake8_dir: ${{ inputs.path }}
+
+  pylama_Check:
+    runs-on: ubuntu-latest
+    container: python:latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Bandit Library
+        run: |
+          pip install pylama
+
+      - name: Check Pylama
+        run: |
+          pylama
+
+  bandit_check:
+    runs-on: ubuntu-latest
+    container: python:latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Bandit Library
+        run: |
+          pip install bandit
+
+      - name: Check Security
+        run: |
+          bandit -r .
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+
+      - run: python --version
