@@ -12,6 +12,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     container: hemendra05/aws-cdk
+    permissions:
+      id-token: write
+      contents: read
     steps:
 
       - name: Configure AWS credentials
