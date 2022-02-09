@@ -2,9 +2,9 @@ name: CDK deploy
 
 on:
   push:
-    branches: [ master ]
+    branches: [ dev1, master ]
   pull_request:
-    branches: [ master ]
+    branches: [ dev1, master ]
     paths:
       - cdk/**
 
