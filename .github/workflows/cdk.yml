@@ -14,6 +14,7 @@ permissions:
 
 jobs:
   deploy:
+    if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     container: hemendra05/aws-cdk
     steps:
