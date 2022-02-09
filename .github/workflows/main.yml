@@ -7,9 +7,13 @@ on:
         required: true
         type: string
 
-# defaults:
-#   run:
-#     working-directory: ${{ github.event.inputs.path }}
+      assume_role:
+        required: true
+        type: string
+
+permissions:
+  id-token: write
+  contents: read 
 
 jobs:
   run_linters:
@@ -72,3 +76,28 @@ jobs:
           python-version: 3.8
 
       - run: python --version
+
+  deploy:
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    container: hemendra05/aws-cdk
+    steps:
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ inputs.assume_role }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - uses: actions/checkout@v2
+
+      - name: Login into AWS CodeArtifacts
+        run: aws codeartifact login --tool pip --repository cdk_base_functions --domain myways-devops --domain-owner 872436821098
+
+      - name: Installing requirements
+        working-directory: ${{ inputs.path }}
+        run: pip install -r requirements.txt
+
+      - name: Deploy the application
+        working-directory: ${{ inputs.path }}
+        run: cdk deploy --require-approval never
