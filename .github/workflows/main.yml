@@ -82,8 +82,7 @@ jobs:
       - run: python --version
 
   deploy:
-    if: ${{ github.event_name == 'push' }}
-    if: ${{ github.ref_name == 'master' }}
+    if: ${{ github.event_name == 'push'  && github.ref_name == 'master' }}
     runs-on: ubuntu-latest
     container: hemendra05/aws-cdk
     steps:
