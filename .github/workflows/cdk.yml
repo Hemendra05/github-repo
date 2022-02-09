@@ -2,9 +2,9 @@ name: CDK deploy
 
 on:
   push:
-    branches: [ master ]
+    branches: [ dev1, master ]
   pull_request:
-    branches: [ master ]
+    branches: [ dev1, master ]
     paths:
       - cdk/**
 
@@ -13,27 +13,8 @@ permissions:
   contents: read 
 
 jobs:
-  deploy:
-    if: ${{ github.event_name == 'push' }}
-    runs-on: ubuntu-latest
-    container: hemendra05/aws-cdk
-    steps:
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          role-to-assume: arn:aws:iam::872436821098:role/ExampleGithubRole
-          aws-region: ${{ secrets.AWS_REGION }}
-
-      - uses: actions/checkout@v2
-
-      - name: Login into AWS CodeArtifacts
-        run: aws codeartifact login --tool pip --repository cdk_base_functions --domain myways-devops --domain-owner 872436821098
-
-      - name: Installing requirements
-        working-directory: ./cdk/
-        run: pip install -r requirements.txt
-
-      - name: Deploy the application
-        working-directory: ./cdk/
-        run: cdk deploy --require-approval never
+  deploy_workflow:
+    uses: Hemendra05/github-repo/.github/workflows/main.yml@dev
+    with:
+      path: ./cdk/
+      assume_role: arn:aws:iam::872436821098:role/ExampleGithubRole
