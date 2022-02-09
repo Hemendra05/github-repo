@@ -1,18 +1,17 @@
-FROM centos
+FROM ubuntu
 
-RUN dnf module install nodejs:16 -y
-
-RUN dnf install python3 -y
-
-RUN ln -s /usr/bin/pip3.6 /usr/bin/pip
-
-RUN pip install --upgrade pip
-
-RUN npm install -g aws-cdk
+RUN apt update &&\
+    apt upgrade &&\
+    apt install curl -y &&\
+    curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh &&\
+    bash nodesource_setup.sh &&\
+    apt install nodejs -y &&\
+    apt install python3-pip -y &&\
+    apt install unzip -y &&\
+    apt install jq -y &&\
+    npm install -g aws-cdk
 
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-
-RUN yum install unzip jq -y
 
 RUN unzip awscliv2.zip
 

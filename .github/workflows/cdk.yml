@@ -12,21 +12,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     container: hemendra05/aws-cdk
-    permissions:
-      id-token: write
-      contents: read
     steps:
 
       - name: Configure AWS credentials
-        run: |
-          export AWS_ROLE_ARN=arn:aws:iam::872436821098:role/ExampleGithubRole
-          export AWS_WEB_IDENTITY_TOKEN_FILE=/tmp/awscreds
-          export AWS_DEFAULT_REGION=ap-south-1
-
-          echo AWS_WEB_IDENTITY_TOKEN_FILE=$AWS_WEB_IDENTITY_TOKEN_FILE >> $GITHUB_ENV
-          echo AWS_ROLE_ARN=$AWS_ROLE_ARN >> $GITHUB_ENV
-          echo AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION >> $GITHUB_ENV
-
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::872436821098:role/ExampleGithubRole
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - uses: actions/checkout@v2
 
@@ -39,4 +31,4 @@ jobs:
 
       - name: Deploy the application
         working-directory: ./cdk/
-        run: cdk synth
+        run: cdk deploy --require-approval never
