@@ -2,9 +2,13 @@ name: CDK deploy
 
 on:
   push:
-    branches: [ dev1, master ]
+    branches:
+      - master
+      - dev1
   pull_request:
-    branches: [ dev1, master ]
+    branches:
+      - master
+      - dev1
     paths:
       - cdk/**
 
@@ -18,3 +22,4 @@ jobs:
     with:
       path: ./cdk/
       assume_role: arn:aws:iam::872436821098:role/ExampleGithubRole
+      

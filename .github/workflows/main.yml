@@ -35,7 +35,7 @@ jobs:
           flake8_dir: ${{ inputs.path }}
 
   pylama_Check:
-    if: ${{ github.ref_name == 'dev' }}
+    if: ${{ github.ref == 'refs/heads/dev' }}
     runs-on: ubuntu-latest
     container: python:latest
     steps:
@@ -82,7 +82,7 @@ jobs:
       - run: python --version
 
   deploy:
-    if: ${{ github.event_name == 'push'  && github.ref_name == 'master' }}
+    if: ${{ github.event_name == 'push' && github.ref_name == 'master' }}
     runs-on: ubuntu-latest
     container: hemendra05/aws-cdk
     steps:
@@ -91,7 +91,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: ${{ inputs.assume_role }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-region: ap-south-1
 
       - uses: actions/checkout@v2
 
