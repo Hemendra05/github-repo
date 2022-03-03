@@ -35,7 +35,7 @@ jobs:
           flake8_dir: ${{ inputs.path }}
 
   pylama_Check:
-    if: ${{ github.ref_name == 'dev' }}
+    if: ${{ github.ref == 'refs/heads/dev' }}
     runs-on: ubuntu-latest
     container: python:latest
     steps:
